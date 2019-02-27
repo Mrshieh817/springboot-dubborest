@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<dubbo:application name="igxe-provider"/>
+	<dubbo:registry address="zookeeper://172.16.13.37:2181"/>
+    <dubbo:protocol name="dubbo" port="20880"/>   
+	<dubbo:annotation package="com.soft" />
+	<dubbo:provider timeout="5000" />
+	<!-- 采用直连，不使用注册中心 -->
+    <!-- <dubbo:registry address="N/A" /> -->
+	<!-- 使用rest才把下面放开 -->
+	<!-- 具体的实现bean -->
+	<dubbo:protocol  name="rest" port="20660"   server="tomcat" accepts="5000" threads="1000" extension="com.soft.tools.ControllFilter" />
+     <bean id="ProviderServiceImpl" class="com.soft.IMP.UserService" />
+    <!-- 声明需要暴露的服务接口 -->
+     <dubbo:service interface="com.soft.IMP.IuserService"    ref="ProviderServiceImpl"  protocol="dubbo,rest" />
+</beans>
