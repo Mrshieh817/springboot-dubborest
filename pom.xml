@@ -76,6 +76,18 @@
 			<artifactId>resteasy-jackson-provider</artifactId>
 			<version>3.0.7.Final</version>
 		</dependency>
+		<!-- JWT TOKEN -->
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.7.0</version>
+		</dependency>
+		<!-- DateUtils类方法介绍 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
+		</dependency>
 	</dependencies>
 
 	<build>
