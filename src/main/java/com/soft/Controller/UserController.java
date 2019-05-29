@@ -28,6 +28,7 @@ public class UserController {
 		return mm;
 	}
 
+	// 生成token
 	@RequestMapping({ "/gettoken" })
 	public String Gettoken() throws Exception {
 		Map<String, String> map = new HashMap<>();
@@ -36,6 +37,7 @@ public class UserController {
 		return JwtUtils.createToken(map);
 	}
 
+	// 验证token
 	@GetMapping({ "/getmap" })
 	public Object getmap(HttpServletRequest request) throws Exception {
 		String token = request.getHeader("Authorization");
